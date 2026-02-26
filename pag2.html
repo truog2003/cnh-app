@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Página 2</title>
+
+<style>
+body { margin: 0; background: #ffffff; opacity: 0; transition: opacity 0.4s ease-in-out; }
+body.fade-in { opacity: 1; }
+body.fade-out { opacity: 0; }
+
+img { width: 100vw; height: auto; display: block; cursor: pointer; }
+</style>
+</head>
+
+<body>
+
+<img src="pag2ed.jpg" onclick="navigateTo('pag3.html')">
+
+<script>
+window.addEventListener("load", function() {
+  document.body.classList.add("fade-in");
+});
+
+function navigateTo(page) {
+  document.body.classList.remove("fade-in");
+  document.body.classList.add("fade-out");
+  setTimeout(function() {
+    window.location.href = page;
+  }, 400);
+}
+</script>
+
+</body>
+</html>
