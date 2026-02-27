@@ -2,14 +2,32 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+
+<!-- Viewport correto para iPhone -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>CNH</title>
+
+<title>CNH do Brasil</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ffffff">
+
+<!-- iOS específico -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CNH">
+
+<!-- Ícones -->
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 
 <style>
 body {
   margin: 0;
   background: #ffffff;
 }
+
 img {
   width: 100vw;
   height: auto;
@@ -17,11 +35,21 @@ img {
   cursor: pointer;
 }
 </style>
+
 </head>
 
 <body>
 
 <img src="pag1ed.jpg" onclick="window.location.href='pag2.html'">
+
+<!-- Service Worker -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(() => console.log("Service Worker registrado"))
+    .catch(err => console.log("Erro SW:", err));
+}
+</script>
 
 </body>
 </html>
