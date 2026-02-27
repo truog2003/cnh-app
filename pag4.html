@@ -6,31 +6,43 @@
 <title>Página 4</title>
 
 <style>
-body { margin: 0; background: #ffffff; opacity: 0; transition: opacity 0.4s ease-in-out; }
-body.fade-in { opacity: 1; }
-body.fade-out { opacity: 0; }
-
-img { width: 100vw; height: auto; display: block; cursor: pointer; }
+body { margin:0; background:#fff; opacity:0; transition:opacity .4s ease-in-out; }
+body.fade-in { opacity:1; }
+body.fade-out { opacity:0; }
+img { width:100vw; height:auto; display:block; }
 </style>
 </head>
 
 <body>
 
-<img src="pag4ed.jpg" onclick="navigateTo('pag5.html')">
+<img src="pag4ed.jpg">
 
 <script>
-window.addEventListener("load", function() {
-  document.body.classList.add("fade-in");
+let startX=0,endX=0;
+const NEXT_PAGE="pag5.html";
+const PREV_PAGE="pag3.html";
+
+document.addEventListener("touchstart",e=>startX=e.changedTouches[0].screenX);
+
+document.addEventListener("touchend",e=>{
+  endX=e.changedTouches[0].screenX;
+  let d=endX-startX;
+  if(d>100) navigateTo(NEXT_PAGE);
+  if(d<-100) navigateTo(PREV_PAGE);
 });
 
-function navigateTo(page) {
+window.addEventListener("load",()=>document.body.classList.add("fade-in"));
+
+function navigateTo(p){
   document.body.classList.remove("fade-in");
   document.body.classList.add("fade-out");
-  setTimeout(function() {
-    window.location.href = page;
-  }, 400);
+  setTimeout(()=>window.location.href=p,400);
 }
 </script>
 
 </body>
+</html>
+
+</body>
+
 </html>
