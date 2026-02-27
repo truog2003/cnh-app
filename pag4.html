@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Habilitação</title>
+<title>Página 4</title>
 
 <style>
-body { margin:0; background:#fff; opacity:0; transition:opacity .4s ease-in-out; }
-body.fade-in { opacity:1; }
-body.fade-out { opacity:0; }
+body { margin:0; background:#fff; }
 img { width:100vw; height:auto; display:block; }
 </style>
 </head>
@@ -19,7 +17,6 @@ img { width:100vw; height:auto; display:block; }
 
 <script>
 let startX=0,endX=0;
-
 const NEXT_PAGE="pag5.html";
 const PREV_PAGE="pag3.html";
 
@@ -31,19 +28,12 @@ document.addEventListener("touchend",e=>{
   endX=e.changedTouches[0].screenX;
   let d=endX-startX;
 
-  if(d<-100) navigateTo(NEXT_PAGE);
-  if(d>100) navigateTo(PREV_PAGE);
+  if(d<-100) window.location.href=NEXT_PAGE;
+  if(d>100) window.location.href=PREV_PAGE;
 });
-
-window.addEventListener("load",()=>document.body.classList.add("fade-in"));
-
-function navigateTo(p){
-  document.body.classList.remove("fade-in");
-  document.body.classList.add("fade-out");
-  setTimeout(()=>window.location.href=p,400);
-}
 </script>
 
 </body>
 </html>
+
 
