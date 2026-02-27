@@ -3,60 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>CNH do Brasil</title>
-
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ffffff">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="CNH">
-<link rel="apple-touch-icon" href="icon-192.png">
+<title>CNH</title>
 
 <style>
-body {
-  margin: 0;
-  background: #ffffff;
-  opacity: 0;
-  transition: opacity 0.4s ease-in-out;
-}
-
-body.fade-in { opacity: 1; }
-body.fade-out { opacity: 0; }
-
-img {
-  width: 100vw;
-  height: auto;
-  display: block;
-  cursor: pointer;
-}
+body { margin:0; background:#fff; opacity:0; transition:opacity .4s ease-in-out; }
+body.fade-in { opacity:1; }
+body.fade-out { opacity:0; }
+img { width:100vw; height:auto; display:block; }
 </style>
 </head>
 
 <body>
 
-<img src="pag1ed.jpg" onclick="navigateTo('pag2.html')">
+<img src="pag1ed.jpg">
 
 <script>
-window.addEventListener("load", function() {
-  document.body.classList.add("fade-in");
+let startX=0,endX=0;
+const NEXT_PAGE="pag2.html";
+const PREV_PAGE=null;
+
+document.addEventListener("touchstart",e=>startX=e.changedTouches[0].screenX);
+
+document.addEventListener("touchend",e=>{
+  endX=e.changedTouches[0].screenX;
+  let d=endX-startX;
+  if(d>100 && NEXT_PAGE) navigateTo(NEXT_PAGE);
 });
 
-function navigateTo(page) {
+window.addEventListener("load",()=>document.body.classList.add("fade-in"));
+
+function navigateTo(p){
   document.body.classList.remove("fade-in");
   document.body.classList.add("fade-out");
-  setTimeout(function() {
-    window.location.href = page;
-  }, 400);
-}
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-    .then(function() {
-      console.log("Service Worker registrado");
-    });
+  setTimeout(()=>window.location.href=p,400);
 }
 </script>
 
 </body>
+</html>
+
+</body>
+
 </html>
