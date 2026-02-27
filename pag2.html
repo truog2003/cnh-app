@@ -3,44 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Informação condutor</title>
+<title>Informação</title>
 
 <style>
-body { margin:0; background:#fff; opacity:0; transition:opacity .4s ease-in-out; }
+body {
+  margin:0;
+  background:#ffffff;
+  opacity:0;
+  transition:opacity .4s ease-in-out;
+}
 body.fade-in { opacity:1; }
 body.fade-out { opacity:0; }
-img { width:100vw; height:auto; display:block; }
+
+img {
+  width:100vw;
+  height:auto;
+  display:block;
+  cursor:pointer;
+}
 </style>
 </head>
 
 <body>
 
-<img src="pag2ed.jpg">
+<img src="pag2ed.jpg" onclick="navigateTo('pag3.html')">
 
 <script>
-let startX=0,endX=0;
-const NEXT_PAGE="pag3.html";
-const PREV_PAGE="index.html";
-
-document.addEventListener("touchstart",e=>startX=e.changedTouches[0].screenX);
-
-document.addEventListener("touchend",e=>{
-  endX=e.changedTouches[0].screenX;
-  let d=endX-startX;
-
-  if(d<-100) navigateTo(NEXT_PAGE);
-  if(d>100) navigateTo(PREV_PAGE);
+window.addEventListener("load",()=>{
+  document.body.classList.add("fade-in");
 });
 
-window.addEventListener("load",()=>document.body.classList.add("fade-in"));
-
-function navigateTo(p){
+function navigateTo(page){
   document.body.classList.remove("fade-in");
   document.body.classList.add("fade-out");
-  setTimeout(()=>window.location.href=p,400);
+  setTimeout(()=>{
+    window.location.href=page;
+  },400);
 }
 </script>
 
 </body>
 </html>
+
 
