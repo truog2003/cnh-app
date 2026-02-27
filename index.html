@@ -7,41 +7,23 @@
 
 <style>
 body {
-  margin:0;
-  background:#ffffff;
-  opacity:0;
-  transition:opacity .4s ease-in-out;
+  margin: 0;
+  background: #ffffff;
 }
-body.fade-in { opacity:1; }
-body.fade-out { opacity:0; }
-
 img {
-  width:100vw;
-  height:auto;
-  display:block;
-  cursor:pointer;
+  width: 100vw;
+  height: auto;
+  display: block;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<img src="pag1ed.jpg" onclick="navigateTo('pag2.html')">
-
-<script>
-window.addEventListener("load",()=>{
-  document.body.classList.add("fade-in");
-});
-
-function navigateTo(page){
-  document.body.classList.remove("fade-in");
-  document.body.classList.add("fade-out");
-  setTimeout(()=>{
-    window.location.href=page;
-  },400);
-}
-</script>
+<img src="pag1ed.jpg" onclick="window.location.href='pag2.html'">
 
 </body>
 </html>
+
 
