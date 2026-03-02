@@ -6,7 +6,8 @@
 <title>Página 6</title>
 
 <style>
-body { margin:0; background:#fff; }
+body { margin:0; background:#fff; opacity:1; transition:opacity .2s ease-out; }
+body.fade-out { opacity:0; }
 img { width:100vw; height:auto; display:block; }
 </style>
 </head>
@@ -17,8 +18,9 @@ img { width:100vw; height:auto; display:block; }
 
 <script>
 let startX=0,endX=0;
-const NEXT_PAGE="pag3.html";
-const PREV_PAGE="pag5.html";
+
+const NEXT="pag3.html";
+const PREV="pag5.html";
 
 document.addEventListener("touchstart",e=>{
   startX=e.changedTouches[0].screenX;
@@ -28,12 +30,20 @@ document.addEventListener("touchend",e=>{
   endX=e.changedTouches[0].screenX;
   let d=endX-startX;
 
-  if(d<-100) window.location.href=NEXT_PAGE;
-  if(d>100) window.location.href=PREV_PAGE;
+  if(d<-80) navigate(NEXT);
+  if(d>80) navigate(PREV);
 });
+
+function navigate(page){
+  document.body.classList.add("fade-out");
+  setTimeout(()=>{
+    window.location.href=page;
+  },200);
+}
 </script>
 
 </body>
 </html>
+
 
 
