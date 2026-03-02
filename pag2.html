@@ -8,8 +8,12 @@
 <style>
 body {
   margin: 0;
-  background: #ffffff;
+  background: #fff;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
 }
+body.fade-out { opacity: 0; }
+
 img {
   width: 100vw;
   height: auto;
@@ -21,8 +25,18 @@ img {
 
 <body>
 
-<img src="pag2ed.jpg" onclick="window.location.href='pag3.html'">
+<img src="pag2ed.jpg" onclick="navigate('pag3.html')">
+
+<script>
+function navigate(page){
+  document.body.classList.add("fade-out");
+  setTimeout(()=>{
+    window.location.href = page;
+  }, 200);
+}
+</script>
 
 </body>
 </html>
+
 
